@@ -1,0 +1,67 @@
+{
+	"servers": {
+		"io.github.hashicorp/terraform-mcp-server": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-e",
+				"TFE_ADDRESS=${input:address}",
+				"-e",
+				"TFE_TOKEN=${input:token}",
+				"-e",
+				"ENABLE_TF_OPERATIONS=${input:enabled}",
+				"docker.io/hashicorp/terraform-mcp-server:0.5.0"
+			],
+			"gallery": "https://api.mcp.github.com",
+			"version": "0.5.0"
+		},
+		"azure-mcp-server": {
+			"type": "stdio",
+			"command": "docker",
+			"args": [
+				"run",
+				"-i",
+				"--rm",
+				"-v",
+				"${env:USERPROFILE}\\.azure:/root/.azure-host:ro",
+				"-e",
+				"AZURE_SUBSCRIPTION_ID=${input:azure_subscription_id}",
+				"garrardkitchen/azure-mcp"
+			],
+			"gallery": "https://api.mcp.github.com",
+			"version": "latest"
+		}
+	},
+	"inputs": [
+		{
+			"id": "address",
+			"type": "promptString",
+			"description": "Terraform Cloud/Enterprise Address",
+			"password": false,
+			"default": "https://app.terraform.io"
+		},
+		{
+			"id": "token",
+			"type": "promptString",
+			"description": "Terraform Cloud/Enterprise API Token",
+			"password": true
+		},
+		{
+			"id": "enabled",
+			"type": "promptString",
+			"description": "Enable Terraform Operations",
+			"password": false,
+			"default": "false"
+		},
+		{
+			"id": "azure_subscription_id",
+			"type": "promptString",
+			"description": "Azure Subscription ID",
+			"password": false,
+			"default": "4798361b-bcde-480f-a551-3c6ea8f38b9f"
+		}
+	]
+}
