@@ -81,6 +81,43 @@ Use MCP tools as the default interface when direct MCP tool invocation is availa
 - Review stopped or deallocated virtual machines
 - Perform cleanup after explicit confirmation
 
+## MCP Prompt Library
+
+Copy and paste these prompts into your MCP-enabled client.
+
+### Azure Discovery Prompts
+- List all resource groups in subscription 4798361b-bcde-480f-a551-3c6ea8f38b9f with location and tag summary.
+- Identify unattached public IP resources in subscription 4798361b-bcde-480f-a551-3c6ea8f38b9f.
+- Show all virtual machines with power state, size, region, and resource group.
+- List all bastion hosts and the virtual networks they are associated with.
+- Find resources missing required tags: owner, environment, costCenter.
+- Give me a count by resource type and top 10 resource groups by resource count.
+- Show resources created in the last 30 days with name, type, and resource group.
+- List all network security groups and number of inbound allow rules per NSG.
+
+### Terraform MCP Prompts
+- List all Terraform workspaces in org <org_name> with current run status.
+- Show workspace variables for <workspace_name> and mark sensitive vs non-sensitive.
+- Get latest run details for workspace <workspace_name> including plan/apply status.
+- Fetch plan logs for run <run_id> and summarize creates, updates, and deletes.
+- Compare Terraform-managed resources vs live Azure resources and show drift candidates.
+- List policy sets attached to workspace <workspace_name> and any policy failures.
+- Show last 10 runs for workspace <workspace_name> with initiator and outcome.
+- Check token permissions for org <org_name>.
+
+### Governance and Cleanup Prompts
+- Generate a governance report: tag compliance, public exposure, and stale resources.
+- Find stopped or deallocated VMs older than 14 days and estimate cleanup candidates.
+- Detect orphaned resources: unattached disks, unattached NICs, unattached public IPs.
+- Build a safe cleanup plan using detect -> review -> confirm -> execute.
+- Produce a change approval summary for resources planned for deletion.
+
+### Safe Execution Prompts
+- Create a Terraform plan-only run for workspace <workspace_name> and show expected changes.
+- Do not apply automatically. Ask me yes/no before any apply.
+- Ask for explicit confirmation before deleting any Azure resource.
+- Prepare cleanup commands, but execute only after I reply CONFIRM.
+
 ## Generic Posture Checklist
 
 - Resource group count
