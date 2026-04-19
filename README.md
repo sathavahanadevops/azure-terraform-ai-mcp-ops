@@ -51,6 +51,25 @@ docker run -i --rm -e TFE_ADDRESS=https://app.terraform.io -e TFE_TOKEN=<your_tf
 docker ps --format "table {{.Image}}\t{{.Status}}\t{{.Names}}"
 ```
 
+## MCP vs CLI Fallback
+
+Use MCP tools as the default interface when direct MCP tool invocation is available in your client runtime.
+
+### Use MCP (Preferred)
+- Structured, tool-first responses for agent workflows
+- Better for multi-step automation (discover -> evaluate -> confirm -> execute)
+- Consistent schema across repeated operations
+
+### Use Azure CLI Fallback
+- Use when MCP servers are running but the chat runtime does not expose callable MCP tool endpoints
+- Good for one-off checks and immediate validation in terminal sessions
+- Keep subscription scope explicit in each command (for example, `--subscription <id>`)
+
+### Recommended Decision Rule
+- If MCP tool calls are available in your client: use MCP
+- If MCP calls are not exposed but Azure auth is present: use Azure CLI
+- For critical or destructive actions: run detect -> review -> confirm -> execute regardless of interface
+
 ## Example Operations
 
 - List resource groups with owner and lifecycle tags
