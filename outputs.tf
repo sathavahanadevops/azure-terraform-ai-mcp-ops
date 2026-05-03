@@ -62,3 +62,18 @@ output "bastion_dns_name" {
   description = "DNS name for Bastion access"
   value       = module.bastion.dns_name
 }
+
+output "storage_account_id" {
+  description = "ID of the storage account"
+  value       = module.storage_account.id
+}
+
+output "storage_account_name" {
+  description = "Name of the storage account"
+  value       = module.storage_account.name
+}
+
+output "storage_account_primary_blob_endpoint" {
+  description = "Primary blob endpoint"
+  value       = module.storage_account.primary_blob_endpoint
+}

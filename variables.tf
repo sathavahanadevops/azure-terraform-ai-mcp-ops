@@ -123,3 +123,9 @@ variable "bastion_public_ip_name" {
   type        = string
   default     = "apmea_sre_testing-vnet-IPv4"
 }
+
+variable "storage_account_name" {
+  description = "Name of the storage account"
+  type        = string
+  default     = "oraclemcpstg001"
+}
