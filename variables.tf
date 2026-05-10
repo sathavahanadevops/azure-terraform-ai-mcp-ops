@@ -79,7 +79,7 @@ variable "location" {
 variable "vnet_name" {
   description = "Name of the virtual network"
   type        = string
-  default     = "apmea_sre_testing-vnet"
+  default     = "sqltesting-vnet"
 }
 
 variable "vnet_address_space" {
@@ -91,7 +91,7 @@ variable "vnet_address_space" {
 variable "vm_name" {
   description = "Name of the virtual machine"
   type        = string
-  default     = "apmea_sre_testing"
+  default     = "sqltesting"
 }
 
 variable "vm_size" {
@@ -103,29 +103,24 @@ variable "vm_size" {
 variable "bastion_name" {
   description = "Name of the Azure Bastion host"
   type        = string
-  default     = "apmea_sre_testing"
+  default     = "SQL"
 }
 
 variable "nsg_name" {
   description = "Name of the network security group"
   type        = string
-  default     = "apmea_sre_testing-nsg"
+  default     = "sqltesting-nsg"
 }
 
 variable "vm_public_ip_name" {
   description = "Name of VM public IP"
   type        = string
-  default     = "apmea_sre_testing-ip"
+  default     = "sqltesting-ip"
 }
 
 variable "bastion_public_ip_name" {
   description = "Name of Bastion public IP"
   type        = string
-  default     = "apmea_sre_testing-vnet-IPv4"
+  default     = "sqltesting-vnet-IPv4"
 }
 
-variable "storage_account_name" {
-  description = "Name of the storage account"
-  type        = string
-  default     = "oraclemcpstg001"
-}
